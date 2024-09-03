@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: LabWebsite
+  servlet:
+    multipart:
+      max-request-size: 20MB
+      max-file-size: 10MB
+
+server:
+  tomcat:
+    max-swallow-size: 30MB
+
+web:
+  alioss:
+    endpoint: ${web.alioss.endpoint}
+    bucket-name: ${web.alioss.bucket-name}
+    access-key-id: ${web.alioss.access-key-id}
+    access-key-secret: ${web.alioss.access-key-secret}
+  python:
+    env: ${web.python.env}
+    program: ${web.python.program}
+    result-dir: ${web.python.result-dir}
