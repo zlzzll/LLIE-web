@@ -1,3 +1,5 @@
+.idea/
+
 # frontend
 # Logs
 frontend/logs
@@ -31,20 +33,25 @@ frontend/*.sw?
 frontend/*.tsbuildinfo
 
 # backend
-backend/HELP.md
-backend/target/
+backend/**/target/
 backend/!.mvn/wrapper/maven-wrapper.jar
 backend/!**/src/main/**/target/
 backend/!**/src/test/**/target/
 
-# resources
-backend/src/main/resources/application-prod.yml
-backend/src/main/resources/application-dev.yml
+### IntelliJ IDEA ###
+backend/.idea/modules.xml
+backend/.idea/jarRepositories.xml
+backend/.idea/compiler.xml
+backend/.idea/libraries/
+backend/*.iws
+backend/*.iml
+backend/*.ipr
 
-# test
-backend/src/test/java/com/lab/labwebsite/*
+# properties
+backend/**/application-dev.yml
+backend/**/application-prod.yml
 
-### STS ###
+### Eclipse ###
 backend/.apt_generated
 backend/.classpath
 backend/.factorypath
@@ -52,12 +59,6 @@ backend/.project
 backend/.settings
 backend/.springBeans
 backend/.sts4-cache
-
-### IntelliJ IDEA ###
-backend/.idea
-backend/*.iws
-backend/*.iml
-backend/*.ipr
 
 ### NetBeans ###
 backend/nbproject/private/
@@ -71,3 +72,6 @@ backend/!**/src/test/**/build/
 
 ### VS Code ###
 backend/.vscode/
+
+### Mac OS ###
+backend/.DS_Store

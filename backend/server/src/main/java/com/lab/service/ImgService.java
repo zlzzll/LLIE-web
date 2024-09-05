@@ -64,10 +64,7 @@ public class ImgService {
         // 上传至OSS
         File file = new File(resultDir + "/" + image.getFilename() + "." + image.getExtension());
         try (FileInputStream fis = new FileInputStream(file)) {
-            // 创建日期目录
-            LocalDate date = LocalDate.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            String directory = "output/" + date.format(formatter);
+            String directory = aliOssUtil.createDateDir(false); // 创建日期目录
             // 上传文件至指定目录，并删除本地文件
             return aliOssUtil.upload(fis.readAllBytes(),
                     directory + "/" + image.getFilename() + "." + image.getExtension());

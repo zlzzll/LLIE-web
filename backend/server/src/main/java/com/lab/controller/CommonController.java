@@ -36,9 +36,7 @@ public class CommonController {
         try {
             String originalFilename = file.getOriginalFilename(); // 获取文件原名
             String extensionName = originalFilename.substring(originalFilename.lastIndexOf(".")); // 获取文件扩展名
-            LocalDate date = LocalDate.now(); // 获取当前日期
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            String directory = "input/" + date.format(formatter); // 创建日期目录
+            String directory = aliOssUtil.createDateDir(true); // 创建日期目录
 
             String filename = directory + "/" +
                     UUID.randomUUID().toString() + extensionName; // 创建唯一的文件名
