@@ -3,7 +3,13 @@
     <div class="flex-item">
       <div>
         <h3>原图</h3>
+        <!-- 原图部分，若没有上传图片则显示空白框 -->
         <img class="image" v-if="originalImage" :src="originalImage" alt="Original Image" />
+        <div v-else class="image-placeholder" style="text-align: center;">
+          请上传图片
+          <br>
+          文件大小不超过8MB
+        </div>
       </div>
 
       <div class="button">
@@ -17,14 +23,24 @@
 
     <div class="flex-item">
       <h3>处理后图片</h3>
-      <img class="image" v-if="processedImage" :src="processedImage" alt="Processed Image" />
+      <div v-if="processedImage" style="display: flex;flex-direction: column;">
+        <img class="image" :src="processedImage" alt="Processed Image" />
+        <el-button type="primary" size="large" @click="downloadImage" style="width: 90px;margin-top: 20px;">
+          下载图片
+        </el-button>
+        <el-button type="primary" size="large" @click="refreshPage"
+          style="width: 90px;margin-top: 20px;margin-left: 0px;">
+          清除图片
+        </el-button>
+      </div>
+      <div v-else class="image-placeholder">处理后图片</div>
     </div>
   </el-container>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import Upload from './Upload.vue';
+import Upload from './UpLoad.vue';
 import Radio from './Radio.vue';
 
 const originalImage = ref(null);
@@ -38,10 +54,48 @@ const handleFileChange = (data: string) => {
 const handleProcessedImage = (data: string) => {
   console.log('Processed image:', data);
   processedImage.value = data;
-}
+};
+// 下载处理后的图片
+const downloadImage = () => {
+  if (!processedImage.value) return;
+
+  const link = document.createElement('a');
+  link.href = processedImage.value;
+  link.download = 'image.jpg';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+// 刷新页面以清除图片
+const refreshPage = () => {
+  window.location.reload();
+};
 </script>
 
+
 <style>
+.image {
+  width: 450px;
+  object-fit: contain;
+  border: 1px solid #ccc;
+}
+
+.image-placeholder {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed #ccc;
+  color: #888;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.image-placeholder:hover {
+  border: 1px dashed #5a9cf8;
+}
+
 .el-container {
   display: flex;
   justify-content: center;
