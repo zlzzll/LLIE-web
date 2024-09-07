@@ -3,6 +3,7 @@
     <div class="flex-item">
       <div>
         <h3>原图</h3>
+        <!-- 111 -->
         <img class="image" v-if="originalImage" :src="originalImage" alt="Original Image" />
         <div v-else class="image-placeholder" style="text-align: center;">
           请上传图片
