@@ -3,7 +3,6 @@
     <div class="flex-item">
       <div>
         <h3>原图</h3>
-        <!-- 原图部分，若没有上传图片则显示空白框 -->
         <img class="image" v-if="originalImage" :src="originalImage" alt="Original Image" />
         <div v-else class="image-placeholder" style="text-align: center;">
           请上传图片
@@ -40,7 +39,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import Upload from './Upload.vue';
+import Upload from './UpLoad.vue';
 import Radio from './Radio.vue';
 
 const originalImage = ref(null);
