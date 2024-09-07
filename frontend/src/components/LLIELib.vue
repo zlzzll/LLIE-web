@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import Upload from './UpLoad.vue';
+import Upload from './Upload.vue';
 import Radio from './Radio.vue';
 
 const originalImage = ref(null);
