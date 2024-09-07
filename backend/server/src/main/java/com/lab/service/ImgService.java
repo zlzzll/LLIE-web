@@ -52,8 +52,12 @@ public class ImgService {
             // python程序错误处理
             byte[] bytes = proc.getErrorStream().readAllBytes();
             if (bytes.length > 0) {
-                log.error(new String(bytes));
-                throw new ImageHandleException(MessageConstant.PYTHON_ERROR);
+                String error = new String(bytes);
+                // 忽略warning
+                if(!error.contains(MessageConstant.PYTHON_WARNING)){
+                    log.error(new String(bytes));
+                    throw new ImageHandleException(MessageConstant.PYTHON_ERROR);
+                }
             } else {
                 log.info(MessageConstant.IMG_HANDLE_SUCCESS);
             }
